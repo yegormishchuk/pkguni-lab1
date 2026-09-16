@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RGB ↔ XYZ ↔ LAB</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Цветовые модели: RGB ↔ XYZ ↔ LAB</h1>
+  <p class="sub">Вариант 3</p>
+
+  <div class="top">
+    <div id="preview"><span id="hex">#FF0000</span></div>
+    <div class="picker">
+      <label for="colorInput">Выбрать цвет из палитры</label>
+      <input type="color" id="colorInput" value="#ff0000">
+    </div>
+  </div>
+
+  <div class="models" id="models"></div>
+
+  <div id="warning" hidden>Внимание: значения RGB были обрезаны (выход за пределы допустимого диапазона)</div>
+  <p class="hint">Изменяйте значения в любой модели — остальные обновятся автоматически</p>
+</main>
+
+<script src="converter.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
