@@ -3,30 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RGB ↔ XYZ ↔ LAB</title>
+<title>RGB ↔ XYZ ↔ LAB ↔ CMYK</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
-  <h1>Цветовые модели: RGB ↔ XYZ ↔ LAB</h1>
+  <h1>Цветовые модели: RGB ↔ XYZ ↔ LAB ↔ CMYK</h1>
   <p class="sub">Вариант 3</p>
 
   <div class="top">
     <div id="preview"><span id="hex">#FF0000</span></div>
-    <div class="picker">
+    <div class="panel settings">
       <label for="colorInput">Выбрать цвет из палитры</label>
       <input type="color" id="colorInput" value="#ff0000">
+      <label for="illuminant">Стандарт освещения</label>
+      <select id="illuminant"></select>
+      <label for="gamutMode">Выход за охват</label>
+      <select id="gamutMode"></select>
+      <label for="cmykMode">Цветоделение CMYK</label>
+      <select id="cmykMode"></select>
     </div>
   </div>
 
+  <div id="warning" hidden></div>
+
   <div class="models" id="models"></div>
 
-  <div id="warning" hidden>Внимание: значения RGB были обрезаны (выход за пределы допустимого диапазона)</div>
-  <p class="hint">Изменяйте значения в любой модели — остальные обновятся автоматически</p>
+  <details class="panel matrix">
+    <summary>Текущая матрица RGB<sub>lin</sub> → XYZ</summary>
+    <p>Белая точка XYZ: <code id="white"></code></p>
+    <pre id="matrix"></pre>
+    <p class="hint">Вычисляется из цветностей основных цветов sRGB и выбранного источника (адаптация Брэдфорда).</p>
+  </details>
+
+  <p class="hint">Изменяйте значения в любой модели — остальные обновятся автоматически. Фон ползунка показывает цвет, который получится при его перемещении.</p>
 </main>
 
-<script src="converter.js"></script>
-<script src="app.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
